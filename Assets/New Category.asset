@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced7b7641eb50c84bb29cac8be3e1f41, type: 3}
+  m_Name: New Category
+  m_EditorClassIdentifier: 
+  description: dsfsdf
+  products:
+  - {fileID: 11400000, guid: ea7dad3002c5e3c4fb522f695cc04a18, type: 2}

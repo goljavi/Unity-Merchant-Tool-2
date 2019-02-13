@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7da5580a288c740aa183663abb9b21, type: 3}
+  m_Name: New Product Event Map 1
+  m_EditorClassIdentifier: 
+  nodes:
+  - id: 3580
+    parentIds: 
+    windowRect:
+      serializedVersion: 2
+      x: 300
+      y: 400
+      width: 100
+      height: 100
+    windowTitle: Start
+    data: 
+    nodeType: Start
+  - id: 5358
+    parentIds: 
+    windowRect:
+      serializedVersion: 2
+      x: 604
+      y: 340
+      width: 180
+      height: 100
+    windowTitle: Comparison
+    data: '{"childrenIDs":[-1,-1],"comparisonType":0,"comparisonOperator":0,"parameterName":["moneyForProductToAppear","money"]}'
+    nodeType: Comparison
+  parameters:
+    intNames: []
+    intValues: 
+    floatNames:
+    - asdasdas
+    - Default Float
+    - money
+    - moneyForProductToAppear
+    floatValues:
+    - 0
+    - 0
+    - 0
+    - 100
+    boolNames: []
+    boolValues: 

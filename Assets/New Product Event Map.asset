@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7da5580a288c740aa183663abb9b21, type: 3}
+  m_Name: New Product Event Map
+  m_EditorClassIdentifier: 
+  nodes:
+  - id: 9363
+    parentIds: 
+    windowRect:
+      serializedVersion: 2
+      x: 256
+      y: 237
+      width: 100
+      height: 100
+    windowTitle: Start
+    data: 
+    nodeType: Start
+  - id: 6177
+    parentIds: 93240000
+    windowRect:
+      serializedVersion: 2
+      x: 432
+      y: 237
+      width: 180
+      height: 100
+    windowTitle: Comparison
+    data: '{"childrenIDs":[7043,2123],"comparisonType":0,"comparisonOperator":2,"parameterName":["money","moneyForProductToChange"]}'
+    nodeType: Comparison
+  - id: 7043
+    parentIds: 21180000
+    windowRect:
+      serializedVersion: 2
+      x: 731
+      y: 196
+      width: 300
+      height: 250
+    windowTitle: Product
+    data: No tenes plata**$#**$#99999**$#0**$#False**$#True**$#False
+    nodeType: Product
+  - id: 2123
+    parentIds: 21180000
+    windowRect:
+      serializedVersion: 2
+      x: 740
+      y: 466
+      width: 300
+      height: 250
+    windowTitle: Product
+    data: Si tenes plata**$#**$#100**$#0**$#False**$#True**$#False
+    nodeType: Product
+  parameters:
+    intNames: []
+    intValues: 
+    floatNames:
+    - Default Float
+    - money
+    - moneyForProductToChange
+    floatValues:
+    - 0
+    - 0
+    - 100
+    boolNames:
+    - aaaaaaa
+    - asdasdasd
+    - asdasdasdaa
+    - Default Bool
+    boolValues: 00000000
