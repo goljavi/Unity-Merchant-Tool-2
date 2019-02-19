@@ -19,12 +19,12 @@ public class ProductEventEditor : EditorWindow {
     Vector2 _scrollStartPos;
 
     //Variables para la grilla
-    private UnityEditor.Graphs.Graph graph;
+    /*private UnityEditor.Graphs.Graph graph;
     private GraphGUITest graphGUI;
 
     class GraphGUITest : UnityEditor.Graphs.GraphGUI
     {
-    }
+    }*/
 
     //Acá se guardan los nodos que se muestran en la ventana. Esta lista se muestra en cada OnGUI() -> DrawNodes()
     List<BaseNode> _nodes = new List<BaseNode>();
@@ -225,9 +225,9 @@ public class ProductEventEditor : EditorWindow {
 
     private void OnEnable()
     {
-        graph = CreateInstance<UnityEditor.Graphs.Graph>();
+        /*graph = CreateInstance<UnityEditor.Graphs.Graph>();
         graphGUI = CreateInstance<GraphGUITest>();
-        graphGUI.graph = graph;
+        graphGUI.graph = graph;*/
     }
 
     //Es el update del EditorWindow
@@ -241,9 +241,9 @@ public class ProductEventEditor : EditorWindow {
         //Registro si hizo click izquierdo o derecho
         UserInput(e);
 
-        graphGUI.BeginGraphGUI(this, new Rect(0f, 0f, position.width, position.height));
+        /*graphGUI.BeginGraphGUI(this, new Rect(0f, 0f, position.width, position.height));
 
-        graphGUI.EndGraphGUI();
+        graphGUI.EndGraphGUI();*/
 
         DrawInteractiveConnection(e);
 
