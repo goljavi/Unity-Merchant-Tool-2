@@ -263,10 +263,39 @@ public class ComparativeNode : BaseNode, INeedsChildren {
 		activeType = converted.comparisonType;
 		activeOperator = converted.comparisonOperator;
 		parameterNames = converted.parameterName;
-		return this;
+        parameterPos1 = GetParameterPosition(parameterNames[0]);
+        parameterPos2 = GetParameterPosition(parameterNames[1]);
+        return this;
 	}
 
-	public override string GetNodeData() {
+    private int GetParameterPosition(string parameterName)
+    {
+        if (!string.IsNullOrEmpty(parameterName))
+        {
+            switch (activeType)
+            {
+                case ComparisonType.Float:
+                    var floats = parameterSource.FloatParametersNames;
+                    for (int i = 0; i < floats.Count; i++) if (parameterName == floats[i]) return i;
+                    break;
+                case ComparisonType.Int:
+                    var ints = parameterSource.IntParametersNames;
+                    for (int i = 0; i < ints.Count; i++) if (parameterName == ints[i]) return i;
+                    break;
+                case ComparisonType.Bool:
+                    var bools = parameterSource.BoolParametersNames;
+                    for (int i = 0; i < bools.Count; i++) if (parameterName == bools[i]) return i;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return default(int);
+    }
+
+
+    public override string GetNodeData() {
 		return JsonUtility.ToJson(new ComparativeNodeData
 		{
 

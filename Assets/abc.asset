@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: fsdfsdfs
   image: {fileID: 2800000, guid: 6393cef33219bf8428e0dff0c38b1be0, type: 3}
-  price: 99999
+  price: 999
   rarity: 10
   category: New Category
   optionalDataKeys:
@@ -23,5 +23,5 @@ MonoBehaviour:
   merchantStockKeys:
   - 
   - 43f5d16b-e4bf-4dbf-9ed6-ffef3df068ed
-  merchantStockValues: 0000000003000000
+  merchantStockValues: 000000001b000000
   productEvents: {fileID: 11400000, guid: a39556cdabe9d4840947a8178cc79a53, type: 2}

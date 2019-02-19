@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
+using System.Linq;
 
 public class MerchantWindow : EditorWindow
 {
@@ -52,17 +53,22 @@ public class MerchantWindow : EditorWindow
         EditorGUILayout.LabelField("Description: ");
         _merchant.description = EditorGUILayout.TextArea(_merchant.description, EditorStyles.textArea, GUILayout.Height(80));
 
-        DrawTextureSelection();
+        
 
         if (_merchant.image != null)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Selected texture: ");
             _merchant.image = (Texture)EditorGUILayout.ObjectField(_merchant.image, typeof(Texture), true);
+            if (GUILayout.Button("Select other", GUILayout.Width(100)))
+            {
+                _merchant.image = null;
+            }
             EditorGUILayout.EndHorizontal();
         }
         else
         {
+            DrawTextureSelection();
             EditorGUILayout.HelpBox("Select an image to continue", MessageType.Info);
         }
 
@@ -106,12 +112,17 @@ public class MerchantWindow : EditorWindow
         }
 
         var textureList = new List<Texture>();
+        var pathsLoaded = new string[paths.Length];
 
         for (int i = 0; i < paths.Length; i++)
         {
             paths[i] = AssetDatabase.GUIDToAssetPath(paths[i]);
-            Texture loaded = (Texture)AssetDatabase.LoadAssetAtPath(paths[i], typeof(Texture));
-            textureList.Add(loaded);
+            if (!pathsLoaded.Contains(paths[i]))
+            {
+                pathsLoaded[i] = paths[i];
+                Texture loaded = (Texture)AssetDatabase.LoadAssetAtPath(paths[i], typeof(Texture));
+                textureList.Add(loaded);
+            }
         }
 
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(150));

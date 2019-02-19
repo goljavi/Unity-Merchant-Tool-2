@@ -43,7 +43,7 @@ public class MerchantBehavior : MonoBehaviour
 
         if (distance < radius)
         {
-            if(merchantUI.closed && !entered) merchantUI.Run(GetAllProducts, GetMerchant(), Buy, GetMoney, GetStock);
+            if(merchantUI.closed && !entered) merchantUI.Run(GetAllProducts, GetMerchant(), Buy, GetMoney, GetStock, GetDialog);
             if (distance > 1.2) transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * (speed/4));
             entered = true;
             return;
@@ -150,7 +150,6 @@ public class MerchantBehavior : MonoBehaviour
             {
                 var comparisonDataObject = node.data.FromJson<Dictionary<string, object>>();
                 var comparisonDataString = node.data.FromJson<Dictionary<string, string>>();
-                Debug.Log(comparisonDataString["parameterName"]);
                 var parametersNames = comparisonDataString["parameterName"].Replace("\"", "").Split(',');
                 List<int> childrenIDs = new List<int>();
 
@@ -167,20 +166,18 @@ public class MerchantBehavior : MonoBehaviour
                     parametersNames
                 );
 
-                Debug.Log(result);
-
                 if (result)
                 {
                     if (childrenIDs[0] > 0)
                     {
-                        return GetNewProductWithEvent(FindNodeById(childrenIDs[0], product.productEvents.nodes), product);
+                        product = GetNewProductWithEvent(FindNodeById(childrenIDs[0], product.productEvents.nodes), product);
                     }
                 }
                 else
                 {
                     if (childrenIDs[1] > 0)
                     {
-                        return GetNewProductWithEvent(FindNodeById(childrenIDs[1], product.productEvents.nodes), product);
+                        product = GetNewProductWithEvent(FindNodeById(childrenIDs[1], product.productEvents.nodes), product);
                     }
                 }
             }

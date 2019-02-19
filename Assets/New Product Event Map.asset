@@ -16,8 +16,8 @@ MonoBehaviour:
     parentIds: 
     windowRect:
       serializedVersion: 2
-      x: 256
-      y: 237
+      x: 302
+      y: 194
       width: 100
       height: 100
     windowTitle: Start
@@ -27,8 +27,8 @@ MonoBehaviour:
     parentIds: 93240000
     windowRect:
       serializedVersion: 2
-      x: 432
-      y: 237
+      x: 480
+      y: 194
       width: 180
       height: 100
     windowTitle: Comparison
@@ -38,23 +38,45 @@ MonoBehaviour:
     parentIds: 21180000
     windowRect:
       serializedVersion: 2
-      x: 731
-      y: 196
+      x: 777
+      y: 153
       width: 300
       height: 250
     windowTitle: Product
-    data: No tenes plata**$#**$#99999**$#0**$#False**$#True**$#False
+    data: No tenes plata**$#**$#99999**$#0**$#False**$#False**$#False
     nodeType: Product
   - id: 2123
     parentIds: 21180000
     windowRect:
       serializedVersion: 2
-      x: 740
-      y: 466
+      x: 1101
+      y: 116
       width: 300
       height: 250
     windowTitle: Product
     data: Si tenes plata**$#**$#100**$#0**$#False**$#True**$#False
+    nodeType: Product
+  - id: 9452
+    parentIds: 93240000
+    windowRect:
+      serializedVersion: 2
+      x: 486
+      y: 340
+      width: 180
+      height: 100
+    windowTitle: Comparison
+    data: '{"childrenIDs":[2507,-1],"comparisonType":0,"comparisonOperator":2,"parameterName":["money","moneyForProductToChange"]}'
+    nodeType: Comparison
+  - id: 2507
+    parentIds: ec240000
+    windowRect:
+      serializedVersion: 2
+      x: 774
+      y: 427
+      width: 300
+      height: 250
+    windowTitle: Product
+    data: '**$#**$#999**$#0**$#False**$#True**$#False'
     nodeType: Product
   parameters:
     intNames: []

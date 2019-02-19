@@ -14,27 +14,39 @@ public class MerchantBehaviorUI : MonoBehaviour
     public Image merchantImage;
     public Text merchantName;
     public Text moneyText;
+    public Text merchantDialogue;
     private Func<Product, string, bool> buyCallback;
     private Func<float> getMoney;
     private Func<Product, int> getStock;
     private Merchant merchant;
     Func<List<Product>> getProducts;
+    Func<string, string> getDialogs;
     public bool closed = true;
+    private bool purchased = false;
+    private bool firstRun = true;
+    private bool notEnoughFunds = false;
 
     public void Run()
     {
-        Run(getProducts, merchant, buyCallback, getMoney, getStock);
+        Run(getProducts, merchant, buyCallback, getMoney, getStock, getDialogs);
     }
 
-    public void Run(Func<List<Product>> getProducts, Merchant merchant, Func<Product, string, bool> buyCallback, Func<float> getMoney, Func<Product, int> getStock)
+    public void Run(Func<List<Product>> getProducts, Merchant merchant, Func<Product, string, bool> buyCallback, Func<float> getMoney, Func<Product, int> getStock, Func<string, string> getDialogs)
     {
-        closed = false;
-        productScreen.SetActive(true);
+        if (firstRun)
+        {
+            merchantDialogue.text = getDialogs("Open");
+            closed = false;
+            productScreen.SetActive(true);
+            firstRun = false;
+        }
+        
         this.getStock = getStock;
         this.getMoney = getMoney;
         this.getProducts = getProducts;
         this.buyCallback = buyCallback;
         this.merchant = merchant;
+        this.getDialogs = getDialogs;
 
         Clear();
         foreach (var product in getProducts())
@@ -54,18 +66,41 @@ public class MerchantBehaviorUI : MonoBehaviour
 
     public void OnBuy(Product product)
     {
-        if (!buyCallback(product, merchant.id)) Debug.Log("Not enough money");
+        if(buyCallback(product, merchant.id))
+        {
+            notEnoughFunds = false;
+            purchased = true;
+            merchantDialogue.text = getDialogs("Purchase");
+        }
+        else
+        {
+            merchantDialogue.text = getDialogs("Not enough funds");
+            notEnoughFunds = true;
+        }
+        
+        
         Run();
     }
 
     public void OnClose()
     {
-        productScreen.SetActive(false);
-        closed = true;
+        if (notEnoughFunds) merchantDialogue.text = getDialogs("Exit beacuse of insuficient funds");
+        else if (purchased) merchantDialogue.text = getDialogs("Exit with purchase");
+        else merchantDialogue.text = getDialogs("Exit without purchase");
+
+        StartCoroutine(WaitForClose());
     }
 
     public void Clear()
     {
         foreach (var prod in productsGO) Destroy(prod);
+    }
+
+    IEnumerator WaitForClose()
+    {
+        yield return new WaitForSeconds(3);
+        productScreen.SetActive(false);
+        closed = true;
+        firstRun = true;
     }
 }

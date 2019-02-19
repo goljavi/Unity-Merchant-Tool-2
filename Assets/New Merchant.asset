@@ -24,9 +24,9 @@ MonoBehaviour:
   - Exit without purchase
   - Exit beacuse of insuficient funds
   dialogueValues:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - "Hola Viajero! Como est\xE1s?"
+  - "Gracias viajero! Disfruta de tu nueva adquisici\xF3n"
+  - "Parece que no te pod\xE9s permitir eso"
+  - "Gracias! Volv\xE9 pronto"
+  - En serio? no vas a comprar nada?
+  - "No vuelvas a aparecerte por aqu\xED sin dinero"

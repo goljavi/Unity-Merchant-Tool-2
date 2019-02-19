@@ -31,17 +31,21 @@ public class ProductWindow : EditorWindow
         EditorGUILayout.LabelField("Description: ");
         _product.description = EditorGUILayout.TextArea(_product.description, EditorStyles.textArea, GUILayout.Height(80));
 
-        DrawTextureSelection();
-
+        
         if (_product.image != null)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Selected texture: ");
             _product.image = (Texture)EditorGUILayout.ObjectField(_product.image, typeof(Texture), true);
+            if (GUILayout.Button("Select other", GUILayout.Width(100)))
+            {
+                _product.image = null;
+            }
             EditorGUILayout.EndHorizontal();
         }
         else
         {
+            DrawTextureSelection();
             EditorGUILayout.HelpBox("Select an image to continue", MessageType.Info);
         }
 
